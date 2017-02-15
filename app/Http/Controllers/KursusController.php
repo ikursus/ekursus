@@ -27,7 +27,8 @@ class KursusController extends Controller
       // Save ke database
 
       // Response
-      return redirect('/kursus/permohonan')->with('session_mesej_berjaya', 'Permohonan berjaya dikirimkan!');
+      return redirect('/kursus/permohonan')
+      ->with('session_mesej_berjaya', $data['nama_pemohon'] . ' Permohonan berjaya dikirimkan!');
 
     }
 
