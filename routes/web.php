@@ -5,7 +5,8 @@ Route::get('/', 'PagesController@homepage');
 // Route paparan senarai kursus
 Route::get('senarai-kursus', 'PagesController@list_kursus');
 // Route borang permohonan
-Route::get('kursus/permohonan', 'KursusController@permohonan');
+Route::get('kursus/permohonan', 'KursusController@paparBorangPermohonan');
+Route::post('kursus/permohonan', 'KursusController@prosesBorangPermohonan');
 
 
 

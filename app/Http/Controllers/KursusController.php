@@ -7,11 +7,20 @@ use Illuminate\Http\Request;
 class KursusController extends Controller
 {
     // Papar borang permohonan kursus
-    public function permohonan()
+    public function paparBorangPermohonan()
     {
       return view('template_borang_permohonan_kursus');
     }
 
+    public function prosesBorangPermohonan(Request $request)
+    {
+      $data = $request->only('nama_pemohon', 'telefon_pemohon');
+      // return $data;
+
+      // Die and dump
+      dd($data);
+
+    }
 
     /**
      * Display a listing of the resource.

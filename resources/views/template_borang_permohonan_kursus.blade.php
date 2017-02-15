@@ -9,7 +9,9 @@
                 <div class="panel-heading">Borang Permohonan</div>
                 <div class="panel-body">
 
-<form>
+<form method="POST">
+  
+{{ csrf_field() }}
 
   <div class="form-group">
     <input type="text" name="nama_pemohon" placeholder="Isi nama anda..." class="form-control">
