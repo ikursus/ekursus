@@ -14,7 +14,14 @@ class KursusController extends Controller
 
     public function prosesBorangPermohonan(Request $request)
     {
-      $data = $request->only('nama_pemohon', 'telefon_pemohon');
+      // $this->validate( $request, $array );
+      $this->validate( $request, [
+        'nama_pemohon' => 'required|min:3',
+        'email_pemohon' => 'required|email|min:3',
+        'kursus_id' => 'required|integer'
+      ] );
+
+      $data = $request->all();
       // return $data;
 
       // Die and dump
