@@ -9,6 +9,14 @@
                 <div class="panel-heading">Borang Permohonan</div>
                 <div class="panel-body">
 
+@if ( count( session('session_mesej_berjaya') ) )
+<div class="alert alert-success">
+    <ul>
+        {{ session('session_mesej_berjaya') }}
+    </ul>
+</div>
+@endif
+
 @if (count($errors) > 0)
     <div class="alert alert-danger">
         <ul>

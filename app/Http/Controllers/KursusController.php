@@ -17,15 +17,17 @@ class KursusController extends Controller
       // $this->validate( $request, $array );
       $this->validate( $request, [
         'nama_pemohon' => 'required|min:3',
-        'email_pemohon' => 'required|email|min:3',
+        'emel_pemohon' => 'required|email|min:3',
         'kursus_id' => 'required|integer'
       ] );
 
       $data = $request->all();
       // return $data;
 
-      // Die and dump
-      dd($data);
+      // Save ke database
+
+      // Response
+      return redirect('/kursus/permohonan')->with('session_mesej_berjaya', 'Permohonan berjaya dikirimkan!');
 
     }
 
