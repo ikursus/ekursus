@@ -12,19 +12,18 @@ Route::post('kursus/permohonan', 'KursusController@prosesBorangPermohonan');
 
 Route::group( ['middleware' => 'auth'], function() {
 
-  // Contoh route yang mengandungi parameters
-  Route::get('profile/{username?}', function($username = null) {
-
-    echo 'Selamat datang ' . $username ;
-
-  });
-
-  // Contoh route yang mengandungi parameters
-  Route::get('logout', function() {
-
-    echo 'Anda sudah logout';
-
-  });
+// Paparkan senarai user yang ada dalam sistem
+Route::get('member', 'UsersController@index');
+// Papar borang tambah user
+Route::get('member/create', 'UsersController@create');
+// Simpan rekod user baru
+Route::post('member/create', 'UsersController@store');
+// Papar borang edit profile user
+Route::get('member/{id}/edit', 'UsersController@edit');
+// Kemaskini rekod user ke dalam database
+Route::patch('member/{id}', 'UsersController@update');
+// Hapus user
+Route::delete('member/{id}', 'UsersController@destroy');
 
 });
 

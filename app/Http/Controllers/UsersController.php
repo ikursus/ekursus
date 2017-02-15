@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class UsersController extends Controller
 {
@@ -13,7 +14,9 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -23,7 +26,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return view('users/create');
     }
 
     /**
@@ -34,7 +37,16 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+          'username' => 'required|min:3'
+        ]);
+
+        $data = $request->except('password');
+        $data['password'] = bcrypt($request->input('password'));
+
+        User::create($data);
+
+        return redirect('member');
     }
 
     /**
@@ -56,7 +68,9 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+
+        return view('users/edit', compact('user'));
     }
 
     /**
