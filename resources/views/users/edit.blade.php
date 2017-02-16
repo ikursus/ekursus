@@ -53,7 +53,7 @@
     {!! Form::select('status', ['admin' => 'Admin', 'user' => 'User'], null, ['placeholder' => 'Sila Pilih', 'class' => 'form-control']) !!}
   </div>
 
-  <button class="btn btn-primary btn-block">Hantar Permohonan</button>
+  <button class="btn btn-primary btn-block">Simpan Maklumat</button>
 
 {!! Form::close() !!}
 
