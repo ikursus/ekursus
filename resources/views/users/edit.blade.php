@@ -27,7 +27,7 @@
     </div>
 @endif
 
-{!! Form::model($user, ['method' => 'patch']) !!}
+{!! Form::model($user, ['method' => 'patch', 'route' => ['updateUser', $user->id]]) !!}
 
   <div class="form-group">
     {!! Form::text('username', null, ['placeholder' => 'Username...', 'class' => 'form-control']) !!}

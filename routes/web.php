@@ -21,9 +21,9 @@ Route::post('member/create', 'UsersController@store');
 // Papar borang edit profile user
 Route::get('member/{id}/edit', 'UsersController@edit')->name('editUser');
 // Kemaskini rekod user ke dalam database
-Route::patch('member/{id}', 'UsersController@update');
+Route::patch('member/{id}', 'UsersController@update')->name('updateUser');
 // Hapus user
-Route::delete('member/{id}', 'UsersController@destroy');
+Route::delete('member/{id}', 'UsersController@destroy')->name('deleteUser');
 
 });
 

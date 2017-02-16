@@ -42,7 +42,37 @@
         <td>{{ $user->telefon }}</td>
         <td>
           <a href="{{ route('editUser', $user->id) }}" class="btn btn-xs btn-info">Edit</a>
-          <a href="{{ url('member/' . $user->id . '/edit') }}" class="btn btn-xs btn-danger">Delete</a>
+
+          <!-- Button trigger modal -->
+<button type="button" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#delete-modal-{{ $user->id }}">
+  Delete
+</button>
+
+<!-- Modal -->
+{!! Form::open(['method' => 'delete', 'route' => ['deleteUser', $user->id ] ]) !!}
+
+<div class="modal fade" id="delete-modal-{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Pengesahan Hapus</h4>
+      </div>
+      <div class="modal-body">
+        <p>Adakah anda bersetuju untuk menghapuskan akaun:</p>
+
+        <li>{{ $user->nama }}</li>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-danger">Confirm</button>
+      </div>
+    </div>
+  </div>
+</div>
+{!! Form::close() !!}
+
         </td>
       </tr>
 
