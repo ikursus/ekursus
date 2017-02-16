@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use DB;
 
 class UsersController extends Controller
 {
@@ -14,9 +14,15 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-
-        return view('users.index', compact('users'));
+        // Berhubung dengan table users
+        // Dapatkan SEMUA rekod
+        $senarai_users = DB::table('users')
+        // ->where('status', '=', 'user')
+        ->orderBy('id', 'desc')
+        ->paginate(3);
+        // Paparkan template index dalam folder users
+        // Attach variable users
+        return view('users/index', compact('senarai_users'));
     }
 
     /**
