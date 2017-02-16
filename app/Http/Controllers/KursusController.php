@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Kursus;
+use App\User;
 
 class KursusController extends Controller
 {
@@ -39,7 +41,11 @@ class KursusController extends Controller
      */
     public function index()
     {
-        //
+        // Dapatkan senarai kursus
+        $senarai_kursus = Kursus::paginate(5);
+
+        // Paparkan template senarai kursus dan attach variable $senarai_kursus
+        return view('kursus/index', compact('senarai_kursus'));
     }
 
     /**
@@ -49,7 +55,15 @@ class KursusController extends Controller
      */
     public function create()
     {
-        //
+        // Dapatkan user yang mempunyai status trainer
+        // Dan dapatkan rekod bagi column nama dan ID
+        // menggunakan fungsi pluck()
+        $trainer = User::where('status', '=', 'trainer')
+        ->pluck('nama', 'nama');
+        // pluck ('paparan pada select box', 'value pada select box');
+
+        // Paparkan borang create kursus, dan attach data trainer
+        return view('kursus/create', compact('trainer'));
     }
 
     /**

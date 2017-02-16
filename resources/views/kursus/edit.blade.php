@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Borang Tambah User</div>
+                <div class="panel-heading">Borang Edit User</div>
                 <div class="panel-body">
 
 @if ( count( session('session_mesej_berjaya') ) )
@@ -27,7 +27,7 @@
     </div>
 @endif
 
-{!! Form::open() !!}
+{!! Form::model($user, ['method' => 'patch', 'route' => ['updateUser', $user->id]]) !!}
 
   <div class="form-group">
     {!! Form::text('username', null, ['placeholder' => 'Username...', 'class' => 'form-control']) !!}
@@ -50,7 +50,7 @@
   </div>
 
   <div class="form-group">
-    {!! Form::select('status', ['admin' => 'Admin', 'user' => 'User', 'trainer' => 'Trainer'], null, ['placeholder' => 'Sila Pilih', 'class' => 'form-control']) !!}
+    {!! Form::select('status', ['admin' => 'Admin', 'user' => 'User'], null, ['placeholder' => 'Sila Pilih', 'class' => 'form-control']) !!}
   </div>
 
   <button class="btn btn-primary btn-block">Simpan Maklumat</button>
