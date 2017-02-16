@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Borang Tambah User</div>
+                <div class="panel-heading">Borang Edit User</div>
                 <div class="panel-body">
 
 @if ( count( session('session_mesej_berjaya') ) )

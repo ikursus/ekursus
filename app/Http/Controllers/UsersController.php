@@ -79,7 +79,7 @@ class UsersController extends Controller
         //->where('id', $id)
         ->first();
 
-        return view('users/edit', compact('user'));
+        return view('users/edit', compact('user') );
     }
 
     /**

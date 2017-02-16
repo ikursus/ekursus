@@ -39,7 +39,7 @@
         <td>{{ ucwords( $user->status ) }}</td>
         <td>{{ $user->telefon }}</td>
         <td>
-          <a href="{{ url('member/' . $user->id . '/edit') }}" class="btn btn-xs btn-info">Edit</a>
+          <a href="{{ route('editUser', $user->id) }}" class="btn btn-xs btn-info">Edit</a>
           <a href="{{ url('member/' . $user->id . '/edit') }}" class="btn btn-xs btn-danger">Delete</a>
         </td>
       </tr>
