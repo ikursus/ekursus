@@ -74,7 +74,19 @@ class KursusController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validasi borang
+        $this->validate( $request, array(
+          'nama' => 'required|min:3',
+        ) );
+
+        // Dapatkan semua data dari borang
+        $data = $request->all();
+
+        // Simpan data ke dalam database
+        Kursus::create($data);
+
+        // Kembali ke halaman senarai kursus
+        return redirect()->route('indexKursus')->with('session_mesej_berjaya', 'Senarai kursus telah ditambaha');
     }
 
     /**

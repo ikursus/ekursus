@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Borang Edit User</div>
+                <div class="panel-heading">Edit Kursus</div>
                 <div class="panel-body">
 
 @if ( count( session('session_mesej_berjaya') ) )
@@ -27,30 +27,42 @@
     </div>
 @endif
 
-{!! Form::model($user, ['method' => 'patch', 'route' => ['updateUser', $user->id]]) !!}
+{!! Form::open(['method' => 'patch', 'route' => ['updateKursus', $kursus->id] ]) !!}
 
   <div class="form-group">
-    {!! Form::text('username', null, ['placeholder' => 'Username...', 'class' => 'form-control']) !!}
+    {!! Form::text('nama', null, ['placeholder' => 'Nama Kursus...', 'class' => 'form-control']) !!}
   </div>
 
   <div class="form-group">
-    {!! Form::text('nama', null, ['placeholder' => 'Nama...', 'class' => 'form-control']) !!}
+    {!! Form::select('trainer', $trainer, null, ['placeholder' => 'Sila Pilih Trainer', 'class' => 'form-control']) !!}
   </div>
 
   <div class="form-group">
-    {!! Form::email('email', null, ['placeholder' => 'emel...', 'class' => 'form-control']) !!}
+    {!! Form::date('tarikh_mula', null, ['placeholder' => 'Tarikh Mula...', 'class' => 'form-control']) !!}
   </div>
 
   <div class="form-group">
-    {!! Form::text('telefon', null, ['placeholder' => 'telefon...', 'class' => 'form-control']) !!}
+    {!! Form::date('tarikh_tamat', null, ['placeholder' => 'Tarikh Tamat...', 'class' => 'form-control']) !!}
   </div>
 
   <div class="form-group">
-    {!! Form::password('password', ['placeholder' => 'password...', 'class' => 'form-control']) !!}
+    {!! Form::time('masa_mula', null, ['placeholder' => 'Masa Mula...', 'class' => 'form-control']) !!}
   </div>
 
   <div class="form-group">
-    {!! Form::select('status', ['admin' => 'Admin', 'user' => 'User'], null, ['placeholder' => 'Sila Pilih', 'class' => 'form-control']) !!}
+    {!! Form::time('masa_tamat', null, ['placeholder' => 'Masa Tamat...', 'class' => 'form-control']) !!}
+  </div>
+
+  <div class="form-group">
+    {!! Form::text('lokasi', null, ['placeholder' => 'Lokasi Kursus...', 'class' => 'form-control']) !!}
+  </div>
+
+  <div class="form-group">
+    {!! Form::text('harga', null, ['placeholder' => 'Harga Kursus...', 'class' => 'form-control']) !!}
+  </div>
+
+  <div class="form-group">
+    {!! Form::text('kuota', null, ['placeholder' => 'Kuota Tempat...', 'class' => 'form-control']) !!}
   </div>
 
   <button class="btn btn-primary btn-block">Simpan Maklumat</button>
