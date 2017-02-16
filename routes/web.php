@@ -15,7 +15,7 @@ Route::group( ['middleware' => 'auth'], function() {
 // Paparkan senarai user yang ada dalam sistem
 Route::get('member', 'UsersController@index');
 // Papar borang tambah user
-Route::get('member/create', 'UsersController@create');
+Route::get('member/create', 'UsersController@create')->name('addUser');
 // Simpan rekod user baru
 Route::post('member/create', 'UsersController@store');
 // Papar borang edit profile user

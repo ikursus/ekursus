@@ -11,6 +11,8 @@
 
         <div class="panel-body">
 
+          <a href="{{ route('addUser') }}" class="btn btn-primary">Tambah User</a>
+
   @if( count( $senarai_users ) )
 
   <table class="table">
