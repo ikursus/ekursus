@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Kursus;
 use App\User;
+use DB;
 
 class KursusController extends Controller
 {
@@ -97,7 +98,20 @@ class KursusController extends Controller
      */
     public function show($id)
     {
-        //
+        // Kaedah relationship query builder (DB)
+        // $kursus = DB::table('kursus')
+        // ->join('enrollments', 'kursus.id', '=', 'enrollments.kursus_id')
+        // ->where('kursus.id', '=', $id)
+        // ->select('enrollments.id', 'enrollments.nama', 'enrollments.emel', 'enrollments.alamat', 'kursus.nama as kursus_nama')
+        // ->get();
+        // Dapatkan maklumat kursus
+        $kursus = Kursus::find($id);
+
+        // Senarai peserta
+        // $peserta = Enrollment::where('kursus_id', '=', $kursus->id)
+        // ->get();
+
+        return view('kursus/senarai_peserta', compact('kursus') );
     }
 
     /**
@@ -108,7 +122,15 @@ class KursusController extends Controller
      */
     public function edit($id)
     {
-        //
+      // Panggil data kursus berdasarkan ID
+        $kursus = Kursus::find($id);
+
+        // Panggil data trainer untuk select box kursus
+        $trainer = User::where('status', '=', 'trainer')
+        ->pluck('nama', 'nama');
+
+        // Paparkan borang edit kursus
+        return view('kursus/edit', compact('kursus', 'trainer') );
     }
 
     /**
@@ -120,7 +142,19 @@ class KursusController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      // validasi borang
+      $this->validate( $request, array(
+        'nama' => 'required|min:3',
+      ) );
+
+      // Dapatkan semua data dari borang
+      $data = $request->all();
+
+      // Simpan data ke dalam database berdasarkan ID
+      Kursus::find($id)->update($data);
+
+      // Kembali ke halaman senarai kursus
+      return redirect()->back()->with('session_mesej_berjaya', 'Senarai kursus telah dikemaskini');
     }
 
     /**
@@ -131,6 +165,8 @@ class KursusController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Kursus::find($id)->delete();
+
+        return redirect()->route('indexKursus')->with('session_mesej_berjaya', 'Kursus berjaya dihapuskan!');
     }
 }

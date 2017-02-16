@@ -21,4 +21,10 @@ class Kursus extends Model
       'harga',
       'kuota',
     ];
+
+    // Relationship diantara table kursus dan table enrollments
+    public function senaraiPeserta()
+    {
+      return $this->hasMany('App\Enrollment', 'kursus_id', 'id');
+    }
 }

@@ -27,7 +27,7 @@
     </div>
 @endif
 
-{!! Form::open(['method' => 'patch', 'route' => ['updateKursus', $kursus->id] ]) !!}
+{!! Form::model( $kursus, ['method' => 'patch', 'route' => ['updateKursus', $kursus->id] ]) !!}
 
   <div class="form-group">
     {!! Form::text('nama', null, ['placeholder' => 'Nama Kursus...', 'class' => 'form-control']) !!}

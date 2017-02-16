@@ -38,6 +38,22 @@ Route::group( ['middleware' => 'auth'], function() {
   Route::patch('kursus/{id}', 'KursusController@update')->name('updateKursus');
   // Hapus kursus
   Route::delete('kursus/{id}', 'KursusController@destroy')->name('deleteKursus');
+  // Paparkan peserta
+  Route::get('kursus/{id}/peserta', 'KursusController@show')->name('showKursus');
+
+
+  // Paparkan senarai enrollments yang ada dalam sistem
+  Route::get('enrollments', 'EnrollmentsController@index')->name('indexEnrollments');
+  // Papar borang tambah enrollments
+  Route::get('enrollments/create', 'EnrollmentsController@create')->name('addEnrollment');
+  // Simpan rekod enrollments baru
+  Route::post('enrollments/create', 'EnrollmentsController@store')->name('storeEnrollment');
+  // Papar borang edit enrollments
+  Route::get('enrollments/{id}/edit', 'EnrollmentsController@edit')->name('editEnrollment');
+  // Kemaskini rekod enrollments ke dalam database
+  Route::patch('enrollments/{id}', 'EnrollmentsController@update')->name('updateEnrollment');
+  // Hapus enrollments
+  Route::delete('enrollments/{id}', 'EnrollmentsController@destroy')->name('deleteEnrollment');
 
 });
 

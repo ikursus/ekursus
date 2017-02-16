@@ -32,6 +32,7 @@
                 @else
                     <li><a href="{{ url('member') }}">Users</a></li>
                     <li><a href="{{ route('indexKursus') }}">Kursus</a></li>
+                    <li><a href="{{ route('indexEnrollments') }}">Enrollments</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             {{ Auth::user()->nama }} <span class="caret"></span>
