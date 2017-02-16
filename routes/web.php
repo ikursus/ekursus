@@ -19,7 +19,7 @@ Route::get('member/create', 'UsersController@create');
 // Simpan rekod user baru
 Route::post('member/create', 'UsersController@store');
 // Papar borang edit profile user
-Route::get('member/{id}/edit', 'UsersController@edit');
+Route::get('member/{id}/edit', 'UsersController@edit')->name('editUser');
 // Kemaskini rekod user ke dalam database
 Route::patch('member/{id}', 'UsersController@update');
 // Hapus user
