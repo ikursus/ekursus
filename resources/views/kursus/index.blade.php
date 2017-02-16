@@ -53,6 +53,7 @@
         <td>{{ $kursus->harga }}</td>
         <td>{{ $kursus->kuota }}</td>
         <td>
+          <a href="{{ route('showKursus', $kursus->id) }}" class="btn btn-xs btn-success">Peserta</a>
           <a href="{{ route('editKursus', $kursus->id) }}" class="btn btn-xs btn-info">Edit</a>
 
           <!-- Button trigger modal -->

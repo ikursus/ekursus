@@ -10,7 +10,7 @@ Route::post('kursus/permohonan', 'KursusController@prosesBorangPermohonan');
 
 
 
-Route::group( ['middleware' => 'auth'], function() {
+Route::group( ['middleware' => array('auth', 'role_admin')], function() {
 
   // Paparkan senarai user yang ada dalam sistem
   Route::get('member', 'UsersController@index');

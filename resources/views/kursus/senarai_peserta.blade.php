@@ -20,7 +20,6 @@
 
     <thead>
       <tr>
-        <th>ID</th>
         <th>Nama Peserta</th>
         <th>Emel Peserta</th>
         <th>Alamat Peserta</th>

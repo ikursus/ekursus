@@ -29,4 +29,20 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    // Function untuk semak status admin
+    public function isAdmin()
+    {
+      // Semak status admin
+      if ( \Auth::user()->status == 'admin' )
+      {
+        return true;
+      }
+
+      return false;
+
+    }
+
+
 }
